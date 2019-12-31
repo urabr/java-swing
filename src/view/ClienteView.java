@@ -25,9 +25,29 @@ public class ClienteView extends javax.swing.JFrame {
         menuCliente.setText("Cliente");
 
         itemMenuManutencao.setText("Manutenção");
+        itemMenuManutencao.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                itemMenuManutencaoMouseClicked(evt);
+            }
+        });
+        itemMenuManutencao.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                itemMenuManutencaoActionPerformed(evt);
+            }
+        });
         menuCliente.add(itemMenuManutencao);
 
         itemMenuPesquisar.setText("Pesquisar");
+        itemMenuPesquisar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                itemMenuPesquisarMouseClicked(evt);
+            }
+        });
+        itemMenuPesquisar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                itemMenuPesquisarActionPerformed(evt);
+            }
+        });
         menuCliente.add(itemMenuPesquisar);
 
         menuBarPrincipal.add(menuCliente);
@@ -36,6 +56,11 @@ public class ClienteView extends javax.swing.JFrame {
         menuSair.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 menuSairMouseClicked(evt);
+            }
+        });
+        menuSair.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuSairActionPerformed(evt);
             }
         });
         menuBarPrincipal.add(menuSair);
@@ -62,6 +87,26 @@ public class ClienteView extends javax.swing.JFrame {
         if (opcao == JOptionPane.YES_OPTION)
             System.exit(0);
     }//GEN-LAST:event_menuSairMouseClicked
+
+    private void itemMenuManutencaoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_itemMenuManutencaoMouseClicked
+        
+    }//GEN-LAST:event_itemMenuManutencaoMouseClicked
+
+    private void itemMenuPesquisarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_itemMenuPesquisarMouseClicked
+        
+    }//GEN-LAST:event_itemMenuPesquisarMouseClicked
+
+    private void itemMenuManutencaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemMenuManutencaoActionPerformed
+        new ManutencaoView().show();
+    }//GEN-LAST:event_itemMenuManutencaoActionPerformed
+
+    private void itemMenuPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemMenuPesquisarActionPerformed
+        new PesquisaView().show();
+    }//GEN-LAST:event_itemMenuPesquisarActionPerformed
+
+    private void menuSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuSairActionPerformed
+        
+    }//GEN-LAST:event_menuSairActionPerformed
 
     public static void main(String args[]) {
 
