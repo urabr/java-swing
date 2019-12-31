@@ -5,9 +5,12 @@ import util.OperacoesCrud;
 public class ManutencaoView extends javax.swing.JFrame {
 
     public Integer operacao;
-    
+
     public ManutencaoView() {
         initComponents();
+
+        desativarBotoes();
+        desativarCampos();
     }
 
     @SuppressWarnings("unchecked")
@@ -34,7 +37,6 @@ public class ManutencaoView extends javax.swing.JFrame {
         rdbFeminino = new javax.swing.JRadioButton();
         dchNascimento = new com.toedter.calendar.JDateChooser();
         txtTelefone = new javax.swing.JTextField();
-        panelSalvarAtualizarCancelar = new javax.swing.JPanel();
         btnSalvar = new javax.swing.JButton();
         btnAtualizar = new javax.swing.JButton();
         btnCancelar = new javax.swing.JButton();
@@ -169,33 +171,6 @@ public class ManutencaoView extends javax.swing.JFrame {
             }
         });
 
-        javax.swing.GroupLayout panelSalvarAtualizarCancelarLayout = new javax.swing.GroupLayout(panelSalvarAtualizarCancelar);
-        panelSalvarAtualizarCancelar.setLayout(panelSalvarAtualizarCancelarLayout);
-        panelSalvarAtualizarCancelarLayout.setHorizontalGroup(
-            panelSalvarAtualizarCancelarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelSalvarAtualizarCancelarLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(btnSalvar)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnAtualizar)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnCancelar)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
-        panelSalvarAtualizarCancelarLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnAtualizar, btnCancelar, btnSalvar});
-
-        panelSalvarAtualizarCancelarLayout.setVerticalGroup(
-            panelSalvarAtualizarCancelarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelSalvarAtualizarCancelarLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(panelSalvarAtualizarCancelarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnSalvar)
-                    .addComponent(btnAtualizar)
-                    .addComponent(btnCancelar))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
         javax.swing.GroupLayout panelAtributosLayout = new javax.swing.GroupLayout(panelAtributos);
         panelAtributos.setLayout(panelAtributosLayout);
         panelAtributosLayout.setHorizontalGroup(
@@ -225,15 +200,19 @@ public class ManutencaoView extends javax.swing.JFrame {
                         .addGroup(panelAtributosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txtCpf, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(panelSexo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelAtributosLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(panelSalvarAtualizarCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(933, 933, 933))
+                            .addComponent(panelSexo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(panelAtributosLayout.createSequentialGroup()
+                        .addComponent(btnSalvar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnAtualizar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnCancelar)))
+                .addContainerGap(17, Short.MAX_VALUE))
         );
 
         panelAtributosLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {lblCodigo, lblCpf, lblNascimento, lblNome, lblSexo, lblTelefone});
+
+        panelAtributosLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnAtualizar, btnCancelar, btnSalvar});
 
         panelAtributosLayout.setVerticalGroup(
             panelAtributosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -262,8 +241,11 @@ public class ManutencaoView extends javax.swing.JFrame {
                 .addGroup(panelAtributosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblTelefone)
                     .addComponent(txtTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(panelSalvarAtualizarCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(panelAtributosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnSalvar)
+                    .addComponent(btnAtualizar)
+                    .addComponent(btnCancelar))
                 .addContainerGap())
         );
 
@@ -283,13 +265,14 @@ public class ManutencaoView extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(spanelTabela)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(panelAcoes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(panelAtributos, javax.swing.GroupLayout.PREFERRED_SIZE, 471, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(spanelTabela, javax.swing.GroupLayout.PREFERRED_SIZE, 591, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(18, 18, 18)
+                        .addComponent(panelAtributos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -301,7 +284,7 @@ public class ManutencaoView extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(panelAtributos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(spanelTabela, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -311,10 +294,22 @@ public class ManutencaoView extends javax.swing.JFrame {
 
     private void btnNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNovoActionPerformed
         operacao = OperacoesCrud.NOVO.getOperacoes(); // operação recebe 1
+        ativarCampos();
+        txtNome.requestFocus();
+        btnSalvar.setEnabled(true);
+        btnCancelar.setEnabled(true);
+        
+        clickNovo();
     }//GEN-LAST:event_btnNovoActionPerformed
 
     private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
         operacao = OperacoesCrud.EDITAR.getOperacoes(); // operacao recebe 2
+        ativarCampos();
+        tblCliente.requestFocus();
+        btnAtualizar.setEnabled(true);
+        btnCancelar.setEnabled(true);
+        
+        clickEditar();
     }//GEN-LAST:event_btnEditarActionPerformed
 
     private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
@@ -327,14 +322,22 @@ public class ManutencaoView extends javax.swing.JFrame {
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
         salvarAtualizar();
+        desativarCampos();
+        desativarBotoes();
+        ativarNovoEditarExcluirFechar();
     }//GEN-LAST:event_btnSalvarActionPerformed
 
     private void btnAtualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtualizarActionPerformed
         salvarAtualizar();
+        desativarCampos();
+        desativarBotoes();
+        ativarNovoEditarExcluirFechar();
     }//GEN-LAST:event_btnAtualizarActionPerformed
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
-        System.out.println("Ação cancelada.");
+        desativarCampos();
+        desativarBotoes();
+        ativarNovoEditarExcluirFechar();
     }//GEN-LAST:event_btnCancelarActionPerformed
 
     public static void main(String args[]) {
@@ -363,7 +366,6 @@ public class ManutencaoView extends javax.swing.JFrame {
     private javax.swing.JLabel lblTelefone;
     private javax.swing.JPanel panelAcoes;
     private javax.swing.JPanel panelAtributos;
-    private javax.swing.JPanel panelSalvarAtualizarCancelar;
     private javax.swing.JPanel panelSexo;
     private javax.swing.JRadioButton rdbFeminino;
     private javax.swing.JRadioButton rdbMasculino;
@@ -381,5 +383,50 @@ public class ManutencaoView extends javax.swing.JFrame {
         } else if (operacao == OperacoesCrud.EDITAR.getOperacoes()) {
             System.out.println("Atualizado");
         }
+    }
+
+    private void desativarBotoes() {
+        btnSalvar.setEnabled(false);
+        btnAtualizar.setEnabled(false);
+        btnCancelar.setEnabled(false);
+    }
+
+    private void desativarCampos() {
+        txtNome.setEditable(false);
+        txtCpf.setEditable(false);
+        rdbMasculino.setEnabled(false);
+        rdbFeminino.setEnabled(false);
+        dchNascimento.setEnabled(false);
+        txtTelefone.setEditable(false);
+    }
+
+    private void ativarCampos() {
+        txtNome.setEditable(true);
+        txtCpf.setEditable(true);
+        rdbMasculino.setEnabled(true);
+        rdbFeminino.setEnabled(true);
+        dchNascimento.setEnabled(true);
+        txtTelefone.setEditable(true);
+    }
+    
+    private void clickNovo() {
+        btnEditar.setEnabled(false);
+        btnExcluir.setEnabled(false);
+        btnFechar.setEnabled(false);
+        btnAtualizar.setEnabled(false);
+    }
+    
+    private void clickEditar() {
+        btnNovo.setEnabled(false);
+        btnExcluir.setEnabled(false);
+        btnFechar.setEnabled(false);
+        btnSalvar.setEnabled(false);
+    }
+    
+    private void ativarNovoEditarExcluirFechar() {
+        btnNovo.setEnabled(true);
+        btnEditar.setEnabled(true);
+        btnExcluir.setEnabled(true);
+        btnFechar.setEnabled(true);
     }
 }
