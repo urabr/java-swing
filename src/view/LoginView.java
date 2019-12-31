@@ -110,7 +110,8 @@ public class LoginView extends javax.swing.JFrame {
                     cv.setVisible(true);
                     cv.setLocationRelativeTo(null);
                 } else {
-                    JOptionPane.showMessageDialog(null, "Dados de acesso inválidos!");
+                    JOptionPane.showMessageDialog(null, "Verificar usuário e senha.", 
+                            "Acesso negado", JOptionPane.ERROR_MESSAGE);
                     limparCampos();
                 }
             }

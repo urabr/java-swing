@@ -1,5 +1,7 @@
 package view;
 
+import javax.swing.JOptionPane;
+
 public class ClienteView extends javax.swing.JFrame {
 
     public ClienteView() {
@@ -31,6 +33,11 @@ public class ClienteView extends javax.swing.JFrame {
         menuBarPrincipal.add(menuCliente);
 
         menuSair.setText("Sair");
+        menuSair.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                menuSairMouseClicked(evt);
+            }
+        });
         menuBarPrincipal.add(menuSair);
 
         setJMenuBar(menuBarPrincipal);
@@ -48,6 +55,13 @@ public class ClienteView extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void menuSairMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuSairMouseClicked
+        String msg = "Deseja sair do sistema?";
+        int opcao = JOptionPane.showConfirmDialog(null, msg, "Confirmação", JOptionPane.YES_NO_OPTION);
+        if (opcao == JOptionPane.YES_OPTION)
+            System.exit(0);
+    }//GEN-LAST:event_menuSairMouseClicked
 
     public static void main(String args[]) {
 
