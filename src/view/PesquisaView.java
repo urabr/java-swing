@@ -23,8 +23,10 @@ public class PesquisaView extends javax.swing.JFrame {
 
         lblNome.setText("Nome");
 
+        btnPesquisar.setMnemonic('P');
         btnPesquisar.setText("Pesquisar");
 
+        btnLimpar.setMnemonic('i');
         btnLimpar.setText("Limpar");
 
         tblCliente.setModel(new javax.swing.table.DefaultTableModel(

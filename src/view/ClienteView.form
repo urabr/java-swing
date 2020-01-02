@@ -6,11 +6,13 @@
       <SubComponents>
         <Menu class="javax.swing.JMenu" name="menuCliente">
           <Properties>
+            <Property name="mnemonic" type="int" value="67"/>
             <Property name="text" type="java.lang.String" value="Cliente"/>
           </Properties>
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="itemMenuManutencao">
               <Properties>
+                <Property name="mnemonic" type="int" value="77"/>
                 <Property name="text" type="java.lang.String" value="Manuten&#xe7;&#xe3;o"/>
               </Properties>
               <Events>
@@ -20,6 +22,7 @@
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="itemMenuPesquisar">
               <Properties>
+                <Property name="mnemonic" type="int" value="80"/>
                 <Property name="text" type="java.lang.String" value="Pesquisar"/>
               </Properties>
               <Events>
@@ -31,7 +34,9 @@
         </Menu>
         <Menu class="javax.swing.JMenu" name="menuSair">
           <Properties>
+            <Property name="mnemonic" type="int" value="114"/>
             <Property name="text" type="java.lang.String" value="Sair"/>
+            <Property name="toolTipText" type="java.lang.String" value=""/>
           </Properties>
           <Events>
             <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="menuSairMouseClicked"/>

@@ -49,6 +49,7 @@ public class ManutencaoView extends javax.swing.JFrame {
 
         panelAcoes.setBorder(javax.swing.BorderFactory.createTitledBorder("Ações"));
 
+        btnNovo.setMnemonic('N');
         btnNovo.setText("Novo");
         btnNovo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -56,6 +57,7 @@ public class ManutencaoView extends javax.swing.JFrame {
             }
         });
 
+        btnEditar.setMnemonic('E');
         btnEditar.setText("Editar");
         btnEditar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -63,6 +65,7 @@ public class ManutencaoView extends javax.swing.JFrame {
             }
         });
 
+        btnExcluir.setMnemonic('x');
         btnExcluir.setText("Excluir");
         btnExcluir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -70,6 +73,7 @@ public class ManutencaoView extends javax.swing.JFrame {
             }
         });
 
+        btnFechar.setMnemonic('F');
         btnFechar.setText("Fechar");
         btnFechar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -150,6 +154,7 @@ public class ManutencaoView extends javax.swing.JFrame {
 
         dchNascimento.setDateFormatString("dd/MM/yyyy");
 
+        btnSalvar.setMnemonic('S');
         btnSalvar.setText("Salvar");
         btnSalvar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -157,6 +162,7 @@ public class ManutencaoView extends javax.swing.JFrame {
             }
         });
 
+        btnAtualizar.setMnemonic('A');
         btnAtualizar.setText("Atualizar");
         btnAtualizar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -164,7 +170,9 @@ public class ManutencaoView extends javax.swing.JFrame {
             }
         });
 
+        btnCancelar.setMnemonic('C');
         btnCancelar.setText("Cancelar");
+        btnCancelar.setToolTipText("");
         btnCancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCancelarActionPerformed(evt);

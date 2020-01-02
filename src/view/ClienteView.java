@@ -22,8 +22,10 @@ public class ClienteView extends javax.swing.JFrame {
         setTitle("Sistema de Clientes");
         setName("frmClienteView"); // NOI18N
 
+        menuCliente.setMnemonic('C');
         menuCliente.setText("Cliente");
 
+        itemMenuManutencao.setMnemonic('M');
         itemMenuManutencao.setText("Manutenção");
         itemMenuManutencao.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -37,6 +39,7 @@ public class ClienteView extends javax.swing.JFrame {
         });
         menuCliente.add(itemMenuManutencao);
 
+        itemMenuPesquisar.setMnemonic('P');
         itemMenuPesquisar.setText("Pesquisar");
         itemMenuPesquisar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -52,7 +55,9 @@ public class ClienteView extends javax.swing.JFrame {
 
         menuBarPrincipal.add(menuCliente);
 
+        menuSair.setMnemonic('r');
         menuSair.setText("Sair");
+        menuSair.setToolTipText("");
         menuSair.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 menuSairMouseClicked(evt);
