@@ -1,5 +1,9 @@
 package view;
 
+import control.ClienteController;
+import java.sql.Date;
+import java.sql.SQLException;
+import model.Cliente;
 import util.OperacoesCrud;
 
 public class ManutencaoView extends javax.swing.JFrame {
@@ -129,7 +133,25 @@ public class ManutencaoView extends javax.swing.JFrame {
 
         textCodigo.setEditable(false);
 
+        txtNome.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNomeActionPerformed(evt);
+            }
+        });
+
+        txtCpf.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtCpfActionPerformed(evt);
+            }
+        });
+
         dchNascimento.setDateFormatString("dd/MM/yyyy");
+
+        txtTelefone.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtTelefoneActionPerformed(evt);
+            }
+        });
 
         btnSalvar.setMnemonic('S');
         btnSalvar.setText("Salvar");
@@ -296,7 +318,7 @@ public class ManutencaoView extends javax.swing.JFrame {
         txtNome.requestFocus();
         btnSalvar.setEnabled(true);
         btnCancelar.setEnabled(true);
-        
+
         clickNovo();
     }//GEN-LAST:event_btnNovoActionPerformed
 
@@ -306,7 +328,7 @@ public class ManutencaoView extends javax.swing.JFrame {
         tblCliente.requestFocus();
         btnAtualizar.setEnabled(true);
         btnCancelar.setEnabled(true);
-        
+
         clickEditar();
     }//GEN-LAST:event_btnEditarActionPerformed
 
@@ -337,6 +359,21 @@ public class ManutencaoView extends javax.swing.JFrame {
         desativarBotoes();
         ativarNovoEditarExcluirFechar();
     }//GEN-LAST:event_btnCancelarActionPerformed
+
+    private void txtNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNomeActionPerformed
+        if (txtNome.getText().length() == 40)
+            return;
+    }//GEN-LAST:event_txtNomeActionPerformed
+
+    private void txtCpfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCpfActionPerformed
+        if (txtCpf.getText().length() == 11)
+            return;
+    }//GEN-LAST:event_txtCpfActionPerformed
+
+    private void txtTelefoneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTelefoneActionPerformed
+        if (txtTelefone.getText().length() == 10)
+            return;
+    }//GEN-LAST:event_txtTelefoneActionPerformed
 
     public static void main(String args[]) {
 
@@ -376,10 +413,31 @@ public class ManutencaoView extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
     private void salvarAtualizar() {
-        if (operacao == OperacoesCrud.NOVO.getOperacoes()) {
-            System.out.println("Salvo");
-        } else if (operacao == OperacoesCrud.EDITAR.getOperacoes()) {
-            System.out.println("Atualizado");
+        // recupera dados digitados pelo usuário
+        String nome = txtNome.getText();
+        String cpf = txtCpf.getText();
+        // String sexo;
+        Date nascimento = new Date(dchNascimento.getDate().getTime());
+        String telefone = txtTelefone.getText();
+
+        // atribui os dados ao objeto "cliente"
+        Cliente cliente = new Cliente();
+        cliente.setNome(nome);
+        cliente.setCpf(cpf);
+        // cliente.setSexo(sexo);
+        cliente.setNascimento(nascimento);
+        cliente.setTelefone(telefone);
+
+        ClienteController clienteController = new ClienteController();
+        try {
+            if (operacao == OperacoesCrud.NOVO.getOperacoes()) {
+                clienteController.incluir(cliente);
+
+            } else if (operacao == OperacoesCrud.EDITAR.getOperacoes()) {
+                clienteController.editar(cliente);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
     }
 
@@ -406,21 +464,21 @@ public class ManutencaoView extends javax.swing.JFrame {
         dchNascimento.setEnabled(true);
         txtTelefone.setEditable(true);
     }
-    
+
     private void clickNovo() {
         btnEditar.setEnabled(false);
         btnExcluir.setEnabled(false);
         btnFechar.setEnabled(false);
         btnAtualizar.setEnabled(false);
     }
-    
+
     private void clickEditar() {
         btnNovo.setEnabled(false);
         btnExcluir.setEnabled(false);
         btnFechar.setEnabled(false);
         btnSalvar.setEnabled(false);
     }
-    
+
     private void ativarNovoEditarExcluirFechar() {
         btnNovo.setEnabled(true);
         btnEditar.setEnabled(true);
